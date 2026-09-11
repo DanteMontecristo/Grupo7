@@ -1,6 +1,6 @@
 import { View, Text, Button, StyleSheet } from "react-native";
-import { useAuth } from "../../context/authContext";
-import { cerrarSesion } from "../../services/authServices";
+import { useAuth } from "../context/authContext";
+import { cerrarSesion } from "../services/authServices";
 
 /**
  * Pantalla de perfil: muestra el correo de la sesion actual
