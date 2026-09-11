@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+// Calcula los márgenes seguros: muesca, cámara, barra de gestos.
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { AuthProvider } from "./src/context/AuthContext";
+import RootNavigator from "./src/navigation/RootNavigator";
 
+// Punto de entrada de la aplicación.
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // EL ORDEN IMPORTA: AuthProvider debe envolver a RootNavigator, porque
+    // RootNavigator usa useAuth(). Al revés, el contexto llega nulo y falla.
+    <SafeAreaProvider>
+      <AuthProvider>
+        <RootNavigator />
+        {/* Barra de estado del sistema (hora, batería) */}
+        <StatusBar style="auto" />
+      </AuthProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
