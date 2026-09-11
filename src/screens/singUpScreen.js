@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { registrar, mensajeError } from "../services/authServices";
 
-export default function SingInScreen({ navigation }) {
+export default function SingUpScreen({ navigation }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
