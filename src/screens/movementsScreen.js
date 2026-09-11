@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 
-// pantalla provicional de Goals
-export default function GoalsScreen() {
+// pantalla provicional de Movements
+export default function MovementsScreen() {
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Text>Goals</Text>
+            <Text>Movements</Text>
         </View>
     );
 }

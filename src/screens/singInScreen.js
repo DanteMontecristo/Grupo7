@@ -7,20 +7,21 @@ import {
   StyleSheet,
   ActivityIndicator,
 } from "react-native";
-import { iniciarSesion, mensajeError } from "../services/authServices";
+import { registrar, mensajeError } from "../services/authServices";
 
-export default function LoginScreen({ navigation }) {
+export default function SingInScreen({ navigation }) {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [cargando, setCargando] = useState(false);
 
-  async function manejarLogin() {
+  async function manejarRegistro() {
     setError("");
     setCargando(true);
     try {
-      await iniciarSesion(email, password);
-      // Al iniciar sesión, onAuthStateChanged (en AuthProvider) actualiza
+      await registrar(name, email, password);
+      // Al crear la cuenta, onAuthStateChanged (en AuthProvider) actualiza
       // el usuario y la navegación cambia sola a AppTabs.
     } catch (e) {
       setError(mensajeError(e));
@@ -31,8 +32,14 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Iniciar sesión</Text>
+      <Text style={styles.title}>Crear cuenta</Text>
 
+      <TextInput
+        style={styles.input}
+        placeholder="Nombre"
+        value={name}
+        onChangeText={setName}
+      />
       <TextInput
         style={styles.input}
         placeholder="Correo electrónico"
@@ -54,11 +61,11 @@ export default function LoginScreen({ navigation }) {
       {cargando ? (
         <ActivityIndicator size="large" />
       ) : (
-        <Button title="Iniciar sesión" onPress={manejarLogin} />
+        <Button title="Crear cuenta" onPress={manejarRegistro} />
       )}
 
-      <Text style={styles.link} onPress={() => navigation.navigate("Registro")}>
-        ¿No tenés cuenta? Creá una
+      <Text style={styles.link} onPress={() => navigation.navigate("Login")}>
+        ¿Ya tenés cuenta? Iniciá sesión
       </Text>
     </View>
   );

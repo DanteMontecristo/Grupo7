@@ -1,5 +1,5 @@
 import {
-    creteUserWithEmailAndPassword,
+    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
 } from "firebase/auth";
@@ -13,9 +13,9 @@ import { doc, // doc: apunta a un documento concreto
     from "firebase/firestore";
 
 // Registra un usuario en Firebase Authentication y guarda sus datos en Firestore.
-export async function registrar(email, password) {
+export async function registrar(name, email, password) {
     // Crea la cuenta usando el correo y la contraseña recibidos.
-    const userCredential = await creteUserWithEmailAndPassword(name, email, password);
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
     // Crea un documento en la colección "users" usando el UID como identificador.
     await setDoc(doc(db, "users", userCredential.user.uid), {

@@ -3,12 +3,12 @@
 
 import {createBottomTabNavigator}
 from "@react-navigation/bottom-tabs";
-import {lonicons} from "@exxpo/vector-icons"; // Viene incluido con expo
+import {Ionicons} from "@expo/vector-icons"; // Viene incluido con expo
 
-import MovimientosScreen from "../screens/movmientos/MovimientosScreen";
-import CategoriasScreen from "../screens/categorias/CategoriasScreen";
-import MetasScreen from "../screens/metas/MetasScreen";
-import PerfilScreen from "../screens/perfil/PerfilScreen";
+import MovimientosScreen from "../screens/movementsScreen";
+import CategoriasScreen from "../screens/category/categoryScreen";
+import MetasScreen from "../screens/goalsScreen";
+import PerfilScreen from "../screens/profileScreen";
 
 const Tab = createBottomTabNavigator ();
 
@@ -29,7 +29,7 @@ export default function AppTabs(){
         // que pestaña se esta dinujando
         screenOptions = {({route}) => ({
             //Color y size los inyecta React Navigation segun si esta activa
-            tabBarlcon: ({color,size}) => (
+            tabBarIcon: ({color,size}) => (
                 <Ionicons
                 name = {iconos[route.name]} size = {size} color = {color} />
             ),
@@ -38,10 +38,10 @@ export default function AppTabs(){
         >
         {/* Movimiento va primero: es la accion mas frecuente y la que responde al P-01 
             (registro abandonado por friccion) */}
-            <tab.Screen name = "Movimientos" component = {MovimientosScreen} />
-            <tab.Screen name = "Categorias" component = {CategoriasScreen} />
-            <tab.Screen name = "Metas" component = {MetasScreen} />
-            <tab.Screen name = "Perfil" component = {PerfilScreen} />
+            <Tab.Screen name = "Movimientos" component = {MovimientosScreen} />
+            <Tab.Screen name = "Categorias" component = {CategoriasScreen} />
+            <Tab.Screen name = "Metas" component = {MetasScreen} />
+            <Tab.Screen name = "Perfil" component = {PerfilScreen} />
             </Tab.Navigator>            
     );
 }

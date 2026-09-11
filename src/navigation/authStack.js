@@ -3,8 +3,8 @@
 
 import {createNativeStackNavigator}
 from "@react-navigation/native-stack";
-import LoginScreen from "../screens/auth/LoginScreen";
-import RegistroScreen from "../screens/auth/RegistroScreen";
+import LoginScreen from "../screens/loginScreen";
+import SingInScreen from "../screens/singInScreen";
 
 const Stack = createNativeStackNavigator ();
 
@@ -15,8 +15,8 @@ export default function AuthStack() {
         <Stack.Navigator
         screenOptions = {{headerShown: false}}>
             {/* La primera declarada es a la que se muestra al arrancar*/}
-            <Stack.Screen name = "Login" component = "LoginScreen" />
-            <Stack.Screen name = "Registro" component = "RegistroScreen" />
+            <Stack.Screen name = "Login" component = {LoginScreen} />
+            <Stack.Screen name = "Registro" component = {SingInScreen} />
             </Stack.Navigator>
     );
 }
